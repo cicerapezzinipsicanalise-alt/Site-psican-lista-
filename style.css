@@ -1,10 +1,8 @@
-/* --- IDENTIDADE VISUAL CICERA PEZZINI --- */
+/* --- ESTILO REFINADO: BRONZE, SEDA E RAMOS --- */
 :root {
-    --primary-bronze: #8c7365;   /* Tom extraído do texto da logo */
-    --accent-gold: #c5a059;     /* Tom das folhas/ramos das imagens */
-    --bg-satin: #e5e5e5;        /* Base para o efeito seda */
-    --text-main: #444444;
-    --white-silk: rgba(255, 255, 255, 0.75);
+    --primary-bronze: #8c7365;   /* Tom do texto da sua logo */
+    --accent-gold: #c5a059;     /* Tom das folhas/ramos */
+    --white-silk: rgba(255, 255, 255, 0.65);
 }
 
 * {
@@ -14,80 +12,66 @@
 }
 
 body {
-    /* Efeito de fundo acetinado/seda (fiel às fotos enviadas) */
-    background: radial-gradient(circle at center, #ffffff 0%, #dcdcdc 100%);
+    /* Fundo degradê que imita o brilho da seda cinza/branca das fotos */
+    background: radial-gradient(circle at center, #ffffff 0%, #e0e0e0 100%);
+    background-attachment: fixed;
     color: var(--primary-bronze);
-    font-family: 'Georgia', serif; /* Elegância clássica da psicanálise */
+    font-family: 'Georgia', serif;
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* --- DECORAÇÃO DE RAMOS E FOLHAS --- */
+/* RAMOS DOURADOS NOS CANTOS (Inspirado nas suas artes) */
 body::before, body::after {
     content: "";
     position: fixed;
-    width: clamp(200px, 30vw, 400px);
-    height: clamp(200px, 30vw, 400px);
+    width: clamp(200px, 30vw, 350px);
+    height: clamp(200px, 30vw, 350px);
     background-image: url('https://www.transparentpng.com/download/leaves/gold-leaves-transparent-background-9.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.18;
+    opacity: 0.25;
     z-index: -1;
     pointer-events: none;
 }
 
 body::before {
-    top: -50px;
-    left: -50px;
-    transform: rotate(165deg);
+    top: -40px;
+    left: -40px;
+    transform: rotate(160deg);
 }
 
 body::after {
-    bottom: -50px;
-    right: -50px;
-    transform: rotate(-15deg);
+    bottom: -40px;
+    right: -40px;
+    transform: rotate(-20deg);
 }
 
 .container {
     width: 90%;
-    max-width: 850px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: clamp(40px, 8vh, 80px) 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
-/* --- LOGO E CABEÇALHO --- */
-header {
-    margin-bottom: 60px;
-}
-
+/* LOGO ESTILIZADA CP */
 .logo-box {
-    font-size: clamp(45px, 10vw, 70px);
+    font-size: clamp(50px, 10vw, 65px);
     color: var(--primary-bronze);
     border: 1.5px solid var(--primary-bronze);
     display: inline-block;
-    padding: 15px 45px;
+    padding: 15px 40px;
     border-radius: 50% 50% 15% 15%;
-    font-weight: 300;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
     margin-bottom: 20px;
-    position: relative;
-    background: rgba(255,255,255,0.2);
-}
-
-.logo-box::after {
-    content: "🍃"; 
-    position: absolute;
-    bottom: 8px;
-    right: 20px;
-    font-size: clamp(15px, 3vw, 22px);
-    opacity: 0.5;
 }
 
 h1 {
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
-    color: var(--primary-bronze);
-    letter-spacing: 4px;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    letter-spacing: 3px;
     text-transform: uppercase;
     font-weight: 400;
 }
@@ -95,23 +79,23 @@ h1 {
 .tagline {
     font-style: italic;
     color: var(--accent-gold);
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    margin-top: 8px;
+    font-size: 1.2rem;
+    margin-top: 5px;
 }
 
-/* --- CARDS COM EFEITO SEDA/VIDRO --- */
+/* CARDS COM EFEITO DE VIDRO/SEDA */
 .content-card {
     background: var(--white-silk);
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    margin: 40px 0;
-    padding: clamp(35px, 6vw, 55px);
-    border-radius: 25px;
-    border-left: 6px solid var(--accent-gold);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.04);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 35px 0;
+    padding: clamp(30px, 5vw, 50px);
+    border-radius: 20px;
+    border-left: 6px solid var(--accent-gold); /* Detalhe lateral dourado igual à foto */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    opacity: 0; /* Começa invisível para o Script animar */
+    transform: translateY(20px);
+    transition: all 1s ease-out;
 }
 
 .content-card.active {
@@ -119,66 +103,22 @@ h1 {
     transform: translateY(0);
 }
 
-.content-card h2 {
-    color: var(--primary-bronze);
-    font-size: clamp(1.4rem, 4vw, 1.8rem);
-    margin-bottom: 20px;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-.content-card p {
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-    color: var(--text-main);
-    font-weight: 300;
-}
-
 .highlight p {
     font-weight: 500;
-    color: var(--primary-bronze);
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
     font-style: italic;
 }
 
-/* --- BOTÃO WHATSAPP --- */
+/* BOTÃO WHATSAPP */
 .whatsapp-btn {
     display: inline-block;
     background-color: #25d366;
     color: white;
-    padding: clamp(18px, 4vw, 22px) clamp(35px, 8vw, 55px);
-    border-radius: 60px;
+    padding: 20px 45px;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    margin-top: 40px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.05) translateY(-3px);
-    background-color: #128c7e;
-    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35);
-}
-
-/* --- RODAPÉ --- */
-footer {
-    margin-top: 80px;
-    padding-bottom: 40px;
-}
-
-.location {
-    font-weight: bold;
-    color: var(--primary-bronze);
-    margin-bottom: 12px;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-}
-
-.copyright {
-    color: #999999;
-    font-size: 0.85rem;
-}
-
-@media (max-width: 768px) {
-    .container { padding-top: 30px; }
-    body::before, body::after { width: 180px; height: 180px; opacity: 0.12; }
+    font-size: 1.1rem;
+    margin-top: 30px;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2);
 }
