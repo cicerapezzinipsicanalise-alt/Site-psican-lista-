@@ -1,8 +1,10 @@
+/* --- IDENTIDADE VISUAL CICERA PEZZINI --- */
 :root {
-    --primary-color: #8c7365; 
-    --leaf-color: #a3b18a;    
-    --bg-cream: #f9f7f2;
-    --text-dark: #444;
+    --primary-bronze: #8c7365;   /* Tom extraído do texto da logo */
+    --accent-gold: #c5a059;     /* Tom das folhas/ramos das imagens */
+    --bg-satin: #e5e5e5;        /* Base para o efeito seda */
+    --text-main: #444444;
+    --white-silk: rgba(255, 255, 255, 0.75);
 }
 
 * {
@@ -12,64 +14,79 @@
 }
 
 body {
-    background-color: var(--bg-cream);
-    color: var(--text-dark);
-    font-family: 'Georgia', serif;
+    /* Efeito de fundo acetinado/seda (fiel às fotos enviadas) */
+    background: radial-gradient(circle at center, #ffffff 0%, #dcdcdc 100%);
+    color: var(--primary-bronze);
+    font-family: 'Georgia', serif; /* Elegância clássica da psicanálise */
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* Decoração de Ramos e Folhas nos cantos */
+/* --- DECORAÇÃO DE RAMOS E FOLHAS --- */
 body::before, body::after {
     content: "";
     position: fixed;
-    width: 350px;
-    height: 350px;
-    background-image: url('https://www.transparentpng.com/download/leaves/green-leaves-transparent-background-12.png');
+    width: clamp(200px, 30vw, 400px);
+    height: clamp(200px, 30vw, 400px);
+    background-image: url('https://www.transparentpng.com/download/leaves/gold-leaves-transparent-background-9.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.15;
+    opacity: 0.18;
     z-index: -1;
     pointer-events: none;
 }
 
 body::before {
-    top: -60px;
-    left: -60px;
-    transform: rotate(180deg);
+    top: -50px;
+    left: -50px;
+    transform: rotate(165deg);
 }
 
 body::after {
-    bottom: -60px;
-    right: -60px;
+    bottom: -50px;
+    right: -50px;
+    transform: rotate(-15deg);
 }
 
 .container {
-    max-width: 800px;
+    width: 90%;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: clamp(40px, 8vh, 80px) 20px;
     text-align: center;
 }
 
+/* --- LOGO E CABEÇALHO --- */
 header {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .logo-box {
-    font-size: 65px;
-    color: var(--primary-color);
-    border: 1.2px solid var(--primary-color);
+    font-size: clamp(45px, 10vw, 70px);
+    color: var(--primary-bronze);
+    border: 1.5px solid var(--primary-bronze);
     display: inline-block;
-    padding: 15px 40px;
+    padding: 15px 45px;
     border-radius: 50% 50% 15% 15%;
     font-weight: 300;
     margin-bottom: 20px;
+    position: relative;
+    background: rgba(255,255,255,0.2);
+}
+
+.logo-box::after {
+    content: "🍃"; 
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+    font-size: clamp(15px, 3vw, 22px);
+    opacity: 0.5;
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    color: var(--primary-bronze);
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 400;
@@ -77,22 +94,24 @@ h1 {
 
 .tagline {
     font-style: italic;
-    color: var(--leaf-color);
-    font-size: 1.2rem;
-    margin-top: 10px;
+    color: var(--accent-gold);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-top: 8px;
 }
 
+/* --- CARDS COM EFEITO SEDA/VIDRO --- */
 .content-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    background: var(--white-silk);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
     margin: 40px 0;
-    padding: 50px 40px;
-    border-radius: 20px;
-    border-left: 5px solid var(--leaf-color);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+    padding: clamp(35px, 6vw, 55px);
+    border-radius: 25px;
+    border-left: 6px solid var(--accent-gold);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.04);
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1s ease-out;
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .content-card.active {
@@ -101,40 +120,65 @@ h1 {
 }
 
 .content-card h2 {
-    color: var(--primary-color);
+    color: var(--primary-bronze);
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
     margin-bottom: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.content-card p {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    color: var(--text-main);
+    font-weight: 300;
 }
 
 .highlight p {
     font-weight: 500;
-    font-size: 1.6rem;
-    color: var(--primary-color);
+    color: var(--primary-bronze);
     font-style: italic;
 }
 
+/* --- BOTÃO WHATSAPP --- */
 .whatsapp-btn {
     display: inline-block;
     background-color: #25d366;
     color: white;
-    padding: 22px 50px;
+    padding: clamp(18px, 4vw, 22px) clamp(35px, 8vw, 55px);
     border-radius: 60px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     margin-top: 40px;
     transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);
 }
 
 .whatsapp-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-3px);
     background-color: #128c7e;
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35);
 }
 
+/* --- RODAPÉ --- */
 footer {
     margin-top: 80px;
+    padding-bottom: 40px;
 }
 
 .location {
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--primary-bronze);
+    margin-bottom: 12px;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+.copyright {
+    color: #999999;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .container { padding-top: 30px; }
+    body::before, body::after { width: 180px; height: 180px; opacity: 0.12; }
 }
